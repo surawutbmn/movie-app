@@ -24,9 +24,8 @@ export default function Modal({ showDetail, handleCloseModal }) {
     }
   }, [showDetail, handleCloseModal])
 
-  // If no movie detail is provided, return null
   if (!showDetail) return null
-  // Function to format runtime from minutes to "Xh Ym"
+  // format runtime from minutes to "Xh Ym"
   function formatRuntime(minutes) {
     const hours = Math.floor(minutes / 60)
     const mins = minutes % 60
@@ -40,7 +39,6 @@ export default function Modal({ showDetail, handleCloseModal }) {
       day: "numeric",
     })
   }
-  // console.log("Modal movie detail:", movie)
   const SeperadedList = ({ items, render }) => {
     return items.map((item, index) => (
       <p key={index}>
@@ -49,13 +47,14 @@ export default function Modal({ showDetail, handleCloseModal }) {
       </p>
     ))
   }
+  // console.log("Modal movie detail:", movie)
   // console.log(movie.certification)
 
   return ReactDom.createPortal(
     <div className='modal-container'>
       {/* Clickable background */}
       <button className='modal-underlay' onClick={handleCloseModal} />
-      {/* Modal content */}
+      {/* Modal content box */}
       <section className='modal-content' role='dialog' aria-modal='true'>
         <button
           onClick={handleCloseModal}
@@ -64,8 +63,10 @@ export default function Modal({ showDetail, handleCloseModal }) {
         >
           &times;
         </button>
+        {/* Modal content */}
         <div className='modal-content-con'>
           <div className='grid grid-cols mt-2 md:mt-0 md:grid-cols-2 gap-4 items-end'>
+            {/* Modal head */}
             <div className='flex flex-col gap-1'>
               <h2>{movie.title}</h2>
               <div className='flex flex-wrap gap-1 text-gray-400'>
@@ -100,6 +101,7 @@ export default function Modal({ showDetail, handleCloseModal }) {
               </div>
             </div>
           </div>
+          {/* Modal image and vdo */}
           <div className='poster-trailer'>
             <div className='poster'>
               <img
@@ -125,6 +127,7 @@ export default function Modal({ showDetail, handleCloseModal }) {
               )}
             </div>
           </div>
+          {/* movie detail content */}
           <div className='modal-section'>
             <h3 className='modal-label'>Genre</h3>
             <div className='modal-value flex flex-wrap gap-1 justify-between'>

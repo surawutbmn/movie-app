@@ -35,8 +35,8 @@ const App = () => {
 
   const [genreMap, setGenreMap] = useState({})
 
-  // Debounce the search term to prevent making too many API requests
-  // by waiting for the user to stop typing
+  // Debounce to prevent too many API requests
+  // waiting user to stop typing
   useDebounce(() => setDebouncedSearchTerm(searchTerm), 1200, [searchTerm])
 
   const fetchMovies = useCallback(
