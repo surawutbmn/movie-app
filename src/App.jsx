@@ -3,7 +3,7 @@ import Search from "./components/Search"
 import MovieCard from "./components/MovieCard"
 import Spinner from "./components/Spinner"
 import { useDebounce } from "react-use"
-import { getTrendingMovies } from "./appwrite"
+import { getTrendingMovies, updateSearchCount } from "./appwrite"
 import { fetchGenres } from "./utils/genres"
 // updateSearchCount
 const API_BASE_URL = "https://api.themoviedb.org/3"
@@ -71,10 +71,10 @@ const App = () => {
         setGenreMap(genreData || {})
         setTotalPages(Math.min(data.total_pages || 1, MAX_PAGE_LIMIT))
 
-        // if (query && data.results.length > 0) {
-        //   // Update search count in Appwrite database
-        //   await updateSearchCount(query, data.results[0])
-        // }
+        if (query && data.results.length > 0) {
+          // Update search count in Appwrite database
+          await updateSearchCount(query, data.results[0])
+        }
       } catch (error) {
         console.error("Error fetching movies:", error)
         setErrorMessage("Failed to fetch movies. Please try again later.")
