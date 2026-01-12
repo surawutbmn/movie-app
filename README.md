@@ -1,12 +1,40 @@
-# React + Vite
+# Movie app
+🔎 Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Movie App is a web application allows users to browse and search movies and TV shows.
+Fetches data from the TMDB API so users can explore new releases, view details, and track trending titles easily.
 
-Currently, two official plugins are available:
+🎯 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Display movie and TV show data from TMDB API
 
-## Expanding the ESLint configuration
+Search movies/TV shows by name with Debounce to reduce API calls
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Store top search results and trending titles in the Appwrite database
+
+🛠 Tech Stack
+
+- Frontend: React.js, Tailwind CSS
+- Backend / Database: Appwrite
+- API: TMDB API
+
+> This project is based on a tutorial, but I customized and extended it with my own features:
+- Added Debounce for search to reduce API calls
+- Connected to Appwrite database to store trending movies
+- Improved UI using Tailwind CSS
+
+🖼 Screenshots
+
+Example screenshots to include:
+
+Browse Movies page
+
+Search Results page
+
+Trending Movies page
+
+💡 Notes
+
+This project is a practice / portfolio project
+
+Movie data is fetched from TMDB API
