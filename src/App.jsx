@@ -5,7 +5,7 @@ import Spinner from "./components/Spinner"
 import { useDebounce } from "react-use"
 import { getTrendingMovies, updateSearchCount } from "./appwrite"
 import { fetchGenres } from "./utils/genres"
-// updateSearchCount
+
 const API_BASE_URL = "https://api.themoviedb.org/3"
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY
 
@@ -47,7 +47,7 @@ const App = () => {
       try {
         const endpoint = query
           ? `${API_BASE_URL}/search/movie?include_adult=false&query=${encodeURIComponent(
-              query
+              query,
             )}&page=${pageNum}`
           : `${API_BASE_URL}/discover/movie?include_adult=false&sort_by=popularity.desc&page=${pageNum}`
 
@@ -65,7 +65,7 @@ const App = () => {
         }
         // setMovieList(data.results || [])
         setMovieList((prev) =>
-          append ? [...prev, ...(data.results || [])] : data.results || []
+          append ? [...prev, ...(data.results || [])] : data.results || [],
         )
         const genreData = await fetchGenres()
         setGenreMap(genreData || {})
@@ -82,7 +82,7 @@ const App = () => {
         setIsLoading(false)
       }
     },
-    []
+    [],
   )
 
   const loadTrendingMovies = async () => {
@@ -94,7 +94,7 @@ const App = () => {
     } catch (error) {
       console.error(`Error fetching trending movies: ${error}`)
       setTrendingError(
-        "Failed to fetch trending movies. Please try again later."
+        "Failed to fetch trending movies. Please try again later.",
       )
     } finally {
       setTrendingLoading(false)
@@ -189,7 +189,7 @@ const App = () => {
             )}
             <div className='mt-[2rem] flex justify-between gap-x-5 items-center'>
               <button
-                className='text-indigo-400 bg-dark-100 rounded-2xl shadow-inner shadow-light-100/10 p-5 disabled:opacity-70'
+                className='text-indigo-400 bg-dark-100 rounded-2xl shadow-inner shadow-light-100/10 p-5 disabled:opacity-70 cursor-pointer disabled:cursor-default'
                 onClick={() => setPage(page - 1)}
                 disabled={page === 1}
               >
@@ -202,7 +202,7 @@ const App = () => {
                 {page} <p className='text-gray-100'>/ {totalPages}</p>
               </span>
               <button
-                className='text-indigo-400 bg-dark-100 rounded-2xl shadow-inner shadow-light-100/10 p-4 disabled:opacity-70'
+                className='text-indigo-400 bg-dark-100 rounded-2xl shadow-inner shadow-light-100/10 p-4 disabled:opacity-70 cursor-pointer disabled:cursor-default'
                 onClick={() => setPage(page + 1)}
                 disabled={page === totalPages}
               >
